@@ -34,4 +34,3 @@ jobs:
           passphrase: ${{ secrets.VPS_SSH_KEY_PASS }}
           script: |
             mkdir -p "${{ secrets.VPS_PATH }}"
-             
