@@ -36,6 +36,7 @@ jobs:
             mkdir -p "${{ secrets.VPS_PATH }}"
 
 
+
                 # SUBIR ARCHIVOS (esto es lo que te falta)
       - name: Upload build to VPS
         uses: appleboy/scp-action@v0.1.7
