@@ -2,7 +2,7 @@ name: Deploy Angular to VPS (Apache)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build-deploy:
@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - run: npm ci
       - run: npm run build -- --configuration production
@@ -31,20 +31,19 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-      
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASS }}
           script: |
             mkdir -p "${{ secrets.VPS_PATH }}"
 
 
-
-                # SUBIR ARCHIVOS (esto es lo que te falta)
+               # SUBIR ARCHIVOS (esto es lo que te falta)
       - name: Upload build to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-        
-          source: "dist/AngularContinuo/"
-          target: "${{ secrets.VPS_PATH }}"
+          passphrase: ${{ secrets.VPS_SSH_KEY_PASS }}
+          source: 'dist/AngularContinuo/'
+          target: '${{ secrets.VPS_PATH }}'
           strip_components: 2
